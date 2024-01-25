@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  sqlserver:
+    container_name: sqlserver
+    image: mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Pass@word123
+      - MSSQL_PID=Evaluation
+    ports:
+      - 1433:1433
+    volumes:
+      - sqlvolume:/var/opt/mssql
+    hostname: sqlpreview
+
+volumes:
+  sqlvolume:
